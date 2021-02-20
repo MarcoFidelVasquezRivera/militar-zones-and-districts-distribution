@@ -1,0 +1,13 @@
+C:\Users\prestamo\Desktop\programas c#\militar-zones-and-districts-distribution\militar-zones-and-districts-distribution\bin\Debug\militar-zones-and-districts-distribution.exe.config
+C:\Users\prestamo\Desktop\programas c#\militar-zones-and-districts-distribution\militar-zones-and-districts-distribution\bin\Debug\militar-zones-and-districts-distribution.exe
+C:\Users\prestamo\Desktop\programas c#\militar-zones-and-districts-distribution\militar-zones-and-districts-distribution\bin\Debug\militar-zones-and-districts-distribution.pdb
+C:\Users\prestamo\Desktop\programas c#\militar-zones-and-districts-distribution\militar-zones-and-districts-distribution\bin\Debug\GMap.NET.Core.dll
+C:\Users\prestamo\Desktop\programas c#\militar-zones-and-districts-distribution\militar-zones-and-districts-distribution\bin\Debug\GMap.NET.WindowsForms.dll
+C:\Users\prestamo\Desktop\programas c#\militar-zones-and-districts-distribution\militar-zones-and-districts-distribution\obj\Debug\militar-zones-and-districts-distribution.csprojAssemblyReference.cache
+C:\Users\prestamo\Desktop\programas c#\militar-zones-and-districts-distribution\militar-zones-and-districts-distribution\obj\Debug\militar_zones_and_districts_distribution.Form1.resources
+C:\Users\prestamo\Desktop\programas c#\militar-zones-and-districts-distribution\militar-zones-and-districts-distribution\obj\Debug\militar_zones_and_districts_distribution.Properties.Resources.resources
+C:\Users\prestamo\Desktop\programas c#\militar-zones-and-districts-distribution\militar-zones-and-districts-distribution\obj\Debug\militar-zones-and-districts-distribution.csproj.GenerateResource.cache
+C:\Users\prestamo\Desktop\programas c#\militar-zones-and-districts-distribution\militar-zones-and-districts-distribution\obj\Debug\militar-zones-and-districts-distribution.csproj.CoreCompileInputs.cache
+C:\Users\prestamo\Desktop\programas c#\militar-zones-and-districts-distribution\militar-zones-and-districts-distribution\obj\Debug\militar-zones-and-districts-distribution.csproj.CopyComplete
+C:\Users\prestamo\Desktop\programas c#\militar-zones-and-districts-distribution\militar-zones-and-districts-distribution\obj\Debug\militar-zones-and-districts-distribution.exe
+C:\Users\prestamo\Desktop\programas c#\militar-zones-and-districts-distribution\militar-zones-and-districts-distribution\obj\Debug\militar-zones-and-districts-distribution.pdb
