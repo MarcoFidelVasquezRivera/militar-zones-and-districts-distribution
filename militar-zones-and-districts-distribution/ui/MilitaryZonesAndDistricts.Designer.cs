@@ -29,14 +29,14 @@ namespace militar_zones_and_districts_distribution
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.chartType = new System.Windows.Forms.ComboBox();
             this.FilterByCity = new System.Windows.Forms.ComboBox();
             this.Filters = new System.Windows.Forms.ComboBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -59,14 +59,14 @@ namespace militar_zones_and_districts_distribution
             this.tabControl1.Location = new System.Drawing.Point(-1, -2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(802, 450);
+            this.tabControl1.Size = new System.Drawing.Size(1451, 679);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.textBox2);
             this.tabPage1.Controls.Add(this.textBox1);
-            this.tabPage1.Controls.Add(this.comboBox4);
+            this.tabPage1.Controls.Add(this.chartType);
             this.tabPage1.Controls.Add(this.FilterByCity);
             this.tabPage1.Controls.Add(this.Filters);
             this.tabPage1.Controls.Add(this.chart1);
@@ -75,36 +75,37 @@ namespace militar_zones_and_districts_distribution
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(794, 424);
+            this.tabPage1.Size = new System.Drawing.Size(1443, 653);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(425, 379);
+            this.textBox2.Location = new System.Drawing.Point(369, 585);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 7;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(300, 379);
+            this.textBox1.Location = new System.Drawing.Point(263, 586);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 6;
             // 
-            // comboBox4
+            // chartType
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.chartType.FormattingEnabled = true;
+            this.chartType.Items.AddRange(new object[] {
             "Barras",
             "Pastel",
             "Puntos"});
-            this.comboBox4.Location = new System.Drawing.Point(594, 282);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 5;
+            this.chartType.Location = new System.Drawing.Point(1100, 582);
+            this.chartType.Name = "chartType";
+            this.chartType.Size = new System.Drawing.Size(121, 21);
+            this.chartType.TabIndex = 5;
+            this.chartType.SelectedIndexChanged += new System.EventHandler(this.chartType_SelectedIndexChanged);
             // 
             // FilterByCity
             // 
@@ -160,7 +161,7 @@ namespace militar_zones_and_districts_distribution
             "VALLEDUPAR",
             "VILLAVICENCIO",
             "YOPAL"});
-            this.FilterByCity.Location = new System.Drawing.Point(152, 379);
+            this.FilterByCity.Location = new System.Drawing.Point(136, 585);
             this.FilterByCity.Name = "FilterByCity";
             this.FilterByCity.Size = new System.Drawing.Size(121, 21);
             this.FilterByCity.TabIndex = 4;
@@ -176,7 +177,7 @@ namespace militar_zones_and_districts_distribution
             "TELEFONO",
             "LATITUD",
             "LONGITUD"});
-            this.Filters.Location = new System.Drawing.Point(9, 379);
+            this.Filters.Location = new System.Drawing.Point(9, 585);
             this.Filters.Name = "Filters";
             this.Filters.Size = new System.Drawing.Size(121, 21);
             this.Filters.TabIndex = 3;
@@ -184,17 +185,18 @@ namespace militar_zones_and_districts_distribution
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(576, 15);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(816, 6);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(209, 240);
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "S1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(621, 544);
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
             // 
@@ -203,12 +205,12 @@ namespace militar_zones_and_districts_distribution
             this.zonesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.zonesTable.Location = new System.Drawing.Point(9, 6);
             this.zonesTable.Name = "zonesTable";
-            this.zonesTable.Size = new System.Drawing.Size(546, 345);
+            this.zonesTable.Size = new System.Drawing.Size(801, 544);
             this.zonesTable.TabIndex = 1;
             // 
             // Filter
             // 
-            this.Filter.Location = new System.Drawing.Point(549, 379);
+            this.Filter.Location = new System.Drawing.Point(480, 582);
             this.Filter.Name = "Filter";
             this.Filter.Size = new System.Drawing.Size(75, 23);
             this.Filter.TabIndex = 0;
@@ -266,7 +268,7 @@ namespace militar_zones_and_districts_distribution
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1472, 689);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -294,7 +296,7 @@ namespace militar_zones_and_districts_distribution
         private System.Windows.Forms.DataGridView zonesTable;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox chartType;
         private System.Windows.Forms.ComboBox FilterByCity;
     }
 }

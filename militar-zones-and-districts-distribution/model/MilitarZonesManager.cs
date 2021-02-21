@@ -234,5 +234,28 @@ namespace militar_zones_and_districts_distribution.model
         {
             return dataTable;
         }
+
+        public Dictionary<String, int> GetMilitarZoneOrDistricts() 
+        {
+            Dictionary<String, int> cities = new Dictionary<string, int>();
+
+
+
+            for (int i = 0; i < militarZones.Count; i++)
+            {
+                if (cities.ContainsKey(militarZones[i].GetCity()))
+                {
+                    cities[militarZones[i].GetCity()]++;
+                }
+                else
+                {
+                    cities.Add(militarZones[i].GetCity(), 1);
+
+
+                }
+            }
+
+            return cities;        
+        }
     }
 }
