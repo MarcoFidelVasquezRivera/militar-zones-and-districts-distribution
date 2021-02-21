@@ -61,38 +61,31 @@ namespace militar_zones_and_districts_distribution
 
         private void button1_Click(object sender, EventArgs e)
         {
-            switch (Filters.Text)
-            {
-                case "ZONA":
-                  
-                break;
 
-                case "ZONA-DIM":
-                    //manager.FilterByChain();
+            Type type = clasification[Filters.Text];
+            switch (type)
+            {
+                case Type.CATEGORIC:
+                    manager.FilterByCategory(FilterByCity.Text);
                     zonesTable.DataSource = manager.getTable();
                     break;
 
-                case "DIRECCION":
-
-                break;
-
-                case "CIUDAD":
-                    manager.FilterByCategory(FilterByCity.Text);
+                case Type.CHAIN:
+                    manager.FilterByChain(Filters.Text, textBox1.Text);
                     zonesTable.DataSource = manager.getTable();
-                break;
+                    break;
 
-                case "TELEFONO":
+                case Type.NUMERIC:
+                    double minimum = System.Convert.ToDouble(textBox1.Text, System.Globalization.CultureInfo.InvariantCulture);
+                    double maximum = System.Convert.ToDouble(textBox2.Text, System.Globalization.CultureInfo.InvariantCulture);
+                    manager.FilterByInterval(Filters.Text, minimum, maximum);
+                    break;
 
-                break;
-
-                case "LATITUD":
-
-                break;
-                
-                case "LONGITUD":
-
-                break;
             }
+
+            textBox1.Text = "";
+            textBox2.Text = "";
+
         }
 
         private void Filters_SelectedIndexChanged(object sender, EventArgs e)
@@ -109,9 +102,12 @@ namespace militar_zones_and_districts_distribution
 
                 case Type.CHAIN:
                     textBox1.Visible = true;
-                break;
+                    textBox1.Text = "chain";
+                    break;
 
                 case Type.NUMERIC:
+                    textBox1.Text = "minimum";
+                    textBox2.Text = "maximum";
                     textBox1.Visible = true;
                     textBox2.Visible = true;
                 break;

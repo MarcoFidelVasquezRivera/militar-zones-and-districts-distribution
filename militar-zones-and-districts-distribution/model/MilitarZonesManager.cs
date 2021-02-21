@@ -33,7 +33,7 @@ namespace militar_zones_and_districts_distribution.model
             while (line!=null && !line.Equals(""))
             {
 
-                Console.WriteLine(line);
+                //Console.WriteLine(line);
                 string[] info = line.Split(',',';');
                 
                 int zoneNumber = System.Convert.ToInt32(info[0]);
@@ -42,9 +42,9 @@ namespace militar_zones_and_districts_distribution.model
                 string city = info[3];
                 string phoneNumber = info[4];
                 double latitude = System.Convert.ToDouble(info[5].TrimStart('"','('), System.Globalization.CultureInfo.InvariantCulture);
-                double longitude = System.Convert.ToDouble(info[6].TrimEnd('"', ')'), System.Globalization.CultureInfo.InvariantCulture);
+                double longitude = System.Convert.ToDouble(info[6].TrimEnd('"', ')'), System.Globalization.CultureInfo.InvariantCulture);//gracias Guinxu por la ayuda CRACKKKKKKKKKKK
 
-                Console.WriteLine(zoneNumber+ "," + zoneDistrict + "," + address + "," + city + "," + phoneNumber +","+latitude+","+longitude);
+                //Console.WriteLine(zoneNumber+ "," + zoneDistrict + "," + address + "," + city + "," + phoneNumber +","+latitude+","+longitude);
                 MilitarZoneOrDistrict toAdd = new MilitarZoneOrDistrict(zoneNumber, zoneDistrict, address, city, phoneNumber, latitude, longitude);
 
                 militarZones.Add(toAdd);
@@ -65,7 +65,7 @@ namespace militar_zones_and_districts_distribution.model
 
         }
 
-        public void FilterByInterval(String rowName, int LowerInterval, int HigherInterval) 
+        public void FilterByInterval(String rowName, double LowerInterval, double HigherInterval) 
         {
             dataTable.Rows.Clear();
             List<MilitarZoneOrDistrict> passedFilter = new List<MilitarZoneOrDistrict>();
@@ -136,6 +136,7 @@ namespace militar_zones_and_districts_distribution.model
 
         public void FilterByChain(String rowName, String chain)
         {
+            Console.WriteLine("se llama correctamente el metodo");
             dataTable.Rows.Clear();               
             List<MilitarZoneOrDistrict> passedFilter = new List<MilitarZoneOrDistrict>();
             if (rowName.Equals("ZONA-DIM")) {
@@ -175,11 +176,13 @@ namespace militar_zones_and_districts_distribution.model
                         dr[6] = mz.GetLongitude();
 
                         dataTable.Rows.Add(dr);
+                        Console.WriteLine("entra");
 
                     }
+                    Console.WriteLine("no entra");
                 }
             }
-            else if (rowName.Equals("TELEFONOS"))
+            else if (rowName.Equals("TELEFONO"))
             {
                 foreach (MilitarZoneOrDistrict mz in militarZones)
                 {
