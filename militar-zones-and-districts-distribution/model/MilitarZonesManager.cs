@@ -60,18 +60,44 @@ namespace militar_zones_and_districts_distribution.model
             }
         }
 
-        public void FilterByInterval(int LowerInterval, int HigherInterval) 
+        public void FilterByInterval(String rowName, int LowerInterval, int HigherInterval) 
         {
             dataTable.Rows.Clear();
             List<MilitarZoneOrDistrict> passedFilter = new List<MilitarZoneOrDistrict>();
-            foreach (MilitarZoneOrDistrict mz in militarZones)
+
+            if (rowName.Equals("Numero de zona"))
             {
-                if (mz.GetZoneNumber() >= LowerInterval && mz.GetZoneNumber() <= HigherInterval) 
+                foreach (MilitarZoneOrDistrict mz in militarZones)
                 {
-                    passedFilter.Add(mz);                
-                
+                    if (mz.GetZoneNumber() >= LowerInterval && mz.GetZoneNumber() <= HigherInterval)
+                    {
+                        passedFilter.Add(mz);
+
+                    }
                 }
             }
+            else if (rowName.Equals("Latitud"))
+            {
+                foreach (MilitarZoneOrDistrict mz in militarZones)
+                {
+                    if (mz.GetLatitude() >= LowerInterval && mz.GetLatitude() <= HigherInterval)
+                    {
+                        passedFilter.Add(mz);
+                    }
+                }
+            }else if(rowName.Equals("Longitud"))
+            {
+                foreach (MilitarZoneOrDistrict mz in militarZones) 
+                {
+                    if (mz.GetLongitude() >= LowerInterval && mz.GetLongitude() <= HigherInterval) 
+                    {
+                        {
+                            passedFilter.Add(mz);
+                        }
+                    }
+                }
+            }
+
             dataTable.Rows.Add(passedFilter);
         }
 
@@ -113,8 +139,21 @@ namespace militar_zones_and_districts_distribution.model
             }
 
             dataTable.Rows.Add(passedFilter);
-
         }
 
+        public void FilterByCategory(String category)
+        {
+            dataTable.Rows.Clear();
+            List<MilitarZoneOrDistrict> passedFilter = new List<MilitarZoneOrDistrict>();
+                foreach (MilitarZoneOrDistrict mz in militarZones)
+                {
+                    if (mz.GetCity().ToUpper().Equals(category.ToUpper()))
+                    {
+                        passedFilter.Add(mz);
+                    }
+                           
+                }
+            dataTable.Rows.Add(passedFilter);
+        }   
     }
 }
