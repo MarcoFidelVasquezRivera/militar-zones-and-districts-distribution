@@ -257,5 +257,10 @@ namespace militar_zones_and_districts_distribution.model
 
             return cities;        
         }
+
+        public List<MilitarZoneOrDistrict> GetListOfMilitarZones()
+        {
+            return militarZones;
+        }
     }
 }

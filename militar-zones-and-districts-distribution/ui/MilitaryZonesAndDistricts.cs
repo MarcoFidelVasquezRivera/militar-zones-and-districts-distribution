@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using GMap.NET;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
 using militar_zones_and_districts_distribution.model;
 
 namespace militar_zones_and_districts_distribution
@@ -19,12 +23,14 @@ namespace militar_zones_and_districts_distribution
         enum Type {NUMERIC, CATEGORIC, CHAIN}
         private Dictionary<string, Type> clasification;
 
+        private GMapOverlay markers;
 
         public Form1()
         {
             InitializeComponent();
             
             manager = new MilitarZonesManager();
+            markers = new GMapOverlay("markers");
             clasification = new Dictionary<string, Type>()
             {
                 {"ZONA", Type.NUMERIC},
@@ -216,6 +222,33 @@ namespace militar_zones_and_districts_distribution
                 chart1.Series[seriesName].Points.AddXY(val.Key, val.Value);
 
             }
+        }
+
+        private void gMap_Load(object sender, EventArgs e)
+        {
+            gMap.MapProvider = GoogleMapProvider.Instance;
+            GMap.NET.GMaps.Instance.Mode = AccessMode.ServerOnly;
+            gMap.Position = new PointLatLng(4.6482837, -74.2478938); //coordenadas de bogotá
+            gMap.ShowCenter = false;
+
+            gMap.Overlays.Add(markers);
+
+            ShowMarkers();
+        }
+
+        private void ShowMarkers()
+        {
+            List<MilitarZoneOrDistrict> militarZones = manager.GetListOfMilitarZones();
+
+            foreach (MilitarZoneOrDistrict zone in militarZones)
+            {
+                PointLatLng newMarker = new PointLatLng(zone.GetLatitude(), zone.GetLongitude());
+
+                GMapMarker marker = new GMarkerGoogle(newMarker, GMarkerGoogleType.red_dot);
+                marker.ToolTipText = zone.GetZoneDistrict() + "\n" + zone.GetLatitude() + "\n" + zone.GetLongitude();
+                markers.Markers.Add(marker);
+            }
+
         }
     }
 }
