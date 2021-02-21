@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="model\MilitarZonesManager.cs" />
     <Compile Include="model\MilitarZoneOrDistrict.cs" />
     <Compile Include="ui\Form1.cs">
       <SubType>Form</SubType>
