@@ -22,5 +22,9 @@ namespace militar_zones_and_districts_distribution
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

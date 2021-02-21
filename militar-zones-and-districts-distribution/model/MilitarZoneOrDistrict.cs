@@ -47,7 +47,7 @@ namespace militar_zones_and_districts_distribution.model
             return this.city;
         }
 
-        public string GetphoneNumeer()
+        public string GetphoneNumber()
         {
             return this.phoneNumber;
         }

@@ -75,7 +75,44 @@ namespace militar_zones_and_districts_distribution.model
             dataTable.Rows.Add(passedFilter);
         }
 
+        public void FilterByChain(String rowName, String chain)
+        {
+            dataTable.Rows.Clear();               
+            List<MilitarZoneOrDistrict> passedFilter = new List<MilitarZoneOrDistrict>();
+            if (rowName.Equals("Zona/Distrito")) {
+                foreach (MilitarZoneOrDistrict mz in militarZones)
+                {
+                    if (mz.GetZoneDistrict().ToUpper().Contains(chain.ToUpper())) 
+                    {
+                        passedFilter.Add(mz);
+                
+                    }
+                }
 
+            }else if (rowName.Equals("Direccion"))
+            {
+                foreach (MilitarZoneOrDistrict mz in militarZones)
+                {
+                    if (mz.GetAddress().ToUpper().Contains(chain.ToUpper()))
+                    {
+                        passedFilter.Add(mz);
+
+                    }
+                }
+            }
+            else if (rowName.Equals("Telefono"))
+            {
+                foreach (MilitarZoneOrDistrict mz in militarZones)
+                {
+                    if (mz.GetphoneNumber().ToUpper().Contains(chain.ToUpper()))
+                    {
+                        passedFilter.Add(mz);
+
+                    }
+                }
+            }
+
+        }
 
     }
 }
