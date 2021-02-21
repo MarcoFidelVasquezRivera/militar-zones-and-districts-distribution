@@ -112,6 +112,8 @@ namespace militar_zones_and_districts_distribution.model
                 }
             }
 
+            dataTable.Rows.Add(passedFilter);
+
         }
 
     }
