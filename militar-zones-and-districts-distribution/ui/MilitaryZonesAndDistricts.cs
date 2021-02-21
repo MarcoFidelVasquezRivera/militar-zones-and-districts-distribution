@@ -15,14 +15,32 @@ namespace militar_zones_and_districts_distribution
     {
 
         private MilitarZonesManager manager;
+        enum Type {NUMERIC, CATEGORIC, CHAIN}
+        private Dictionary<string, Type> clasification;
+
+
         public Form1()
         {
             InitializeComponent();
+            
             manager = new MilitarZonesManager();
+            clasification = new Dictionary<string, Type>()
+            {
+                {"ZONA", Type.NUMERIC},
+                {"ZONA-DIM", Type.CHAIN },
+                {"DIRECCION",Type.CHAIN},
+                {"CIUDAD", Type.CATEGORIC},
+                {"TELEFONO", Type.CHAIN},
+                {"LATITUD", Type.NUMERIC},
+                {"LONGITUD", Type.NUMERIC}
+            };
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            FilterByCity.Visible = false;
+            textBox1.Visible = false;
+            textBox2.Visible = false;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.InitialDirectory = "c:\\";
@@ -35,7 +53,7 @@ namespace militar_zones_and_districts_distribution
                 string selectedFileName = openFileDialog1.FileName;
 
                 manager.LoadZones(selectedFileName);
-                manager.FilterByInterval("Numero de zona",int.MinValue,int.MaxValue);
+                manager.FilterByInterval("ZONA", int.MinValue, int.MaxValue);
                 zonesTable.DataSource = manager.getTable();
 
             }
@@ -43,7 +61,62 @@ namespace militar_zones_and_districts_distribution
 
         private void button1_Click(object sender, EventArgs e)
         {
+            switch (Filters.Text)
+            {
+                case "ZONA":
+                  
+                break;
 
+                case "ZONA-DIM":
+                    //manager.FilterByChain();
+                    zonesTable.DataSource = manager.getTable();
+                    break;
+
+                case "DIRECCION":
+
+                break;
+
+                case "CIUDAD":
+                    manager.FilterByCategory(FilterByCity.Text);
+                    zonesTable.DataSource = manager.getTable();
+                break;
+
+                case "TELEFONO":
+
+                break;
+
+                case "LATITUD":
+
+                break;
+                
+                case "LONGITUD":
+
+                break;
+            }
+        }
+
+        private void Filters_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterByCity.Visible = false;
+            textBox1.Visible = false;
+            textBox2.Visible = false;
+            Type type = clasification[Filters.Text];
+            switch (type) 
+            {
+                case Type.CATEGORIC:
+                    FilterByCity.Visible = true;
+                break;
+
+                case Type.CHAIN:
+                    textBox1.Visible = true;
+                break;
+
+                case Type.NUMERIC:
+                    textBox1.Visible = true;
+                    textBox2.Visible = true;
+                break;
+
+            }
         }
     }
 }

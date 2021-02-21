@@ -70,7 +70,7 @@ namespace militar_zones_and_districts_distribution.model
             dataTable.Rows.Clear();
             List<MilitarZoneOrDistrict> passedFilter = new List<MilitarZoneOrDistrict>();
 
-            if (rowName.Equals("Numero de zona"))
+            if (rowName.Equals("ZONA"))
             {
                 foreach (MilitarZoneOrDistrict mz in militarZones)
                 {
@@ -91,53 +91,58 @@ namespace militar_zones_and_districts_distribution.model
                     }
                 }
             }
-            else if (rowName.Equals("Latitud"))
+            else if (rowName.Equals("LATITUD"))
             {
                 foreach (MilitarZoneOrDistrict mz in militarZones)
                 {
                     if (mz.GetLatitude() >= LowerInterval && mz.GetLatitude() <= HigherInterval)
                     {
-                        passedFilter.Add(mz);
+                        DataRow dr = dataTable.NewRow();
+
+                        dr[0] = mz.GetZoneNumber();
+                        dr[1] = mz.GetZoneDistrict();
+                        dr[2] = mz.GetAddress();
+                        dr[3] = mz.GetCity();
+                        dr[4] = mz.GetphoneNumber();
+                        dr[5] = mz.GetLatitude();
+                        dr[6] = mz.GetLongitude();
+
+                        dataTable.Rows.Add(dr); ;
                     }
                 }
-            }else if(rowName.Equals("Longitud"))
+            }else if(rowName.Equals("LONGITUD"))
             {
                 foreach (MilitarZoneOrDistrict mz in militarZones) 
                 {
-                    if (mz.GetLongitude() >= LowerInterval && mz.GetLongitude() <= HigherInterval) 
+                    if (mz.GetLongitude() <= LowerInterval && mz.GetLongitude() >= HigherInterval) 
                     {
                         {
-                            passedFilter.Add(mz);
+                            DataRow dr = dataTable.NewRow();
+
+                            dr[0] = mz.GetZoneNumber();
+                            dr[1] = mz.GetZoneDistrict();
+                            dr[2] = mz.GetAddress();
+                            dr[3] = mz.GetCity();
+                            dr[4] = mz.GetphoneNumber();
+                            dr[5] = mz.GetLatitude();
+                            dr[6] = mz.GetLongitude();
+
+                            dataTable.Rows.Add(dr);
                         }
                     }
                 }
             }
-
-            dataTable.Rows.Add(passedFilter);
         }
 
         public void FilterByChain(String rowName, String chain)
         {
             dataTable.Rows.Clear();               
             List<MilitarZoneOrDistrict> passedFilter = new List<MilitarZoneOrDistrict>();
-            if (rowName.Equals("Zona/Distrito")) {
+            if (rowName.Equals("ZONA-DIM")) {
                 foreach (MilitarZoneOrDistrict mz in militarZones)
                 {
                     if (mz.GetZoneDistrict().ToUpper().Contains(chain.ToUpper())) 
-                    {
-                        /*
-                        Municipio toAdd = new Municipio(data[1], data[3], data[4]);
-                        Departamentos[data[0]].Municipios.Add(toAdd);
-
-                        //here the data is loaded to the datatable
-                        DataRow dr = DataTable.NewRow();
-                        int columnIndex = 0;
-                        foreach (string headerWord in headers)
-                        {
-                            dr[headerWord] = data[columnIndex++];
-                        }
-                        
-                        */
+                    {                   
                         DataRow dr = dataTable.NewRow();
 
                         dr[0] = mz.GetZoneNumber();
@@ -149,35 +154,53 @@ namespace militar_zones_and_districts_distribution.model
                         dr[6] = mz.GetLongitude();
 
                         dataTable.Rows.Add(dr);
-                        //passedFilter.Add(mz);
 
                     }
                 }
 
-            }else if (rowName.Equals("Direccion"))
+            }else if (rowName.Equals("DIRECCION"))
             {
                 foreach (MilitarZoneOrDistrict mz in militarZones)
                 {
                     if (mz.GetAddress().ToUpper().Contains(chain.ToUpper()))
                     {
-                        passedFilter.Add(mz);
+                        DataRow dr = dataTable.NewRow();
+
+                        dr[0] = mz.GetZoneNumber();
+                        dr[1] = mz.GetZoneDistrict();
+                        dr[2] = mz.GetAddress();
+                        dr[3] = mz.GetCity();
+                        dr[4] = mz.GetphoneNumber();
+                        dr[5] = mz.GetLatitude();
+                        dr[6] = mz.GetLongitude();
+
+                        dataTable.Rows.Add(dr);
 
                     }
                 }
             }
-            else if (rowName.Equals("Telefono"))
+            else if (rowName.Equals("TELEFONOS"))
             {
                 foreach (MilitarZoneOrDistrict mz in militarZones)
                 {
                     if (mz.GetphoneNumber().ToUpper().Contains(chain.ToUpper()))
                     {
-                        passedFilter.Add(mz);
+                        DataRow dr = dataTable.NewRow();
+
+                        dr[0] = mz.GetZoneNumber();
+                        dr[1] = mz.GetZoneDistrict();
+                        dr[2] = mz.GetAddress();
+                        dr[3] = mz.GetCity();
+                        dr[4] = mz.GetphoneNumber();
+                        dr[5] = mz.GetLatitude();
+                        dr[6] = mz.GetLongitude();
+
+                        dataTable.Rows.Add(dr);
 
                     }
                 }
             }
 
-            dataTable.Rows.Add(passedFilter);
         }
 
         public void FilterByCategory(String category)
@@ -188,11 +211,20 @@ namespace militar_zones_and_districts_distribution.model
                 {
                     if (mz.GetCity().ToUpper().Equals(category.ToUpper()))
                     {
-                        passedFilter.Add(mz);
-                    }
+                    DataRow dr = dataTable.NewRow();
+
+                    dr[0] = mz.GetZoneNumber();
+                    dr[1] = mz.GetZoneDistrict();
+                    dr[2] = mz.GetAddress();
+                    dr[3] = mz.GetCity();
+                    dr[4] = mz.GetphoneNumber();
+                    dr[5] = mz.GetLatitude();
+                    dr[6] = mz.GetLongitude();
+
+                    dataTable.Rows.Add(dr);
+                }
                            
                 }
-            dataTable.Rows.Add(passedFilter);
         }   
 
         public DataTable getTable()

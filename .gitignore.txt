@@ -1,3 +1,3 @@
-/militar-zones-and-districts-distribution/.vs/
-/militar-zones-and-districts-distribution/bin/
-/militar-zones-and-districts-distribution/obj/
+militar-zones-and-districts-distribution/.vs/
+militar-zones-and-districts-distribution/bin/
+militar-zones-and-districts-distribution/obj/
