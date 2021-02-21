@@ -250,5 +250,31 @@ namespace militar_zones_and_districts_distribution
             }
 
         }
+
+        private void filterMap_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            markers.Clear();
+            if (filterMap.Text.Equals("TODO")) 
+            {
+                ShowMarkers();
+
+            }
+            else 
+            {
+                List<MilitarZoneOrDistrict> marks = manager.GetMarkerFromCity(filterMap.Text);
+                foreach(MilitarZoneOrDistrict zone in marks)
+                {
+                    PointLatLng newMarker = new PointLatLng(zone.GetLatitude(), zone.GetLongitude());
+
+                    GMapMarker marker = new GMarkerGoogle(newMarker, GMarkerGoogleType.red_dot);
+                    marker.ToolTipText = zone.GetZoneDistrict() + "\n" + zone.GetLatitude() + "\n" + zone.GetLongitude();
+                    markers.Markers.Add(marker);
+
+
+                }
+            
+            
+            }
+        }
     }
 }

@@ -228,7 +228,23 @@ namespace militar_zones_and_districts_distribution.model
                 }
                            
                 }
-        }   
+        }
+
+        public List<MilitarZoneOrDistrict> GetMarkerFromCity(String city)
+        {
+            List<MilitarZoneOrDistrict> passedFilter = new List<MilitarZoneOrDistrict>();
+            foreach (MilitarZoneOrDistrict mz in militarZones)
+            {
+                if (mz.GetCity().ToUpper().Equals(city.ToUpper()))
+                {
+                    passedFilter.Add(mz);
+
+                }
+
+            }
+
+            return passedFilter;
+        }
 
         public DataTable getTable()
         {

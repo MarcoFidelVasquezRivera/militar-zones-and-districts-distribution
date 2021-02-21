@@ -29,9 +29,8 @@ namespace militar_zones_and_districts_distribution
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -43,7 +42,7 @@ namespace militar_zones_and_districts_distribution
             this.zonesTable = new System.Windows.Forms.DataGridView();
             this.Filter = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.filterMap = new System.Windows.Forms.ComboBox();
             this.gMap = new GMap.NET.WindowsForms.GMapControl();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -185,17 +184,13 @@ namespace militar_zones_and_districts_distribution
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(816, 6);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "S1";
-            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(621, 544);
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
@@ -220,7 +215,7 @@ namespace militar_zones_and_districts_distribution
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.filterMap);
             this.tabPage2.Controls.Add(this.gMap);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -230,13 +225,66 @@ namespace militar_zones_and_districts_distribution
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // filterMap
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(1111, 49);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 1;
+            this.filterMap.FormattingEnabled = true;
+            this.filterMap.Items.AddRange(new object[] {
+            "TODO",
+            "ARAUCA",
+            "ARMENIA",
+            "BARBOSA",
+            "BARRANCABERMEJA",
+            "BARRANQUILLA",
+            "BOGOTA",
+            "BUCARAMANGA",
+            "BUENAVENTURA",
+            "BUGA",
+            "CAJICA",
+            "CALI",
+            "CAREPA",
+            "CARTAGENA",
+            "CARTAGO",
+            "CAUCASIA",
+            "CHAPARRAL",
+            "CHIQUINQUIRA",
+            "CUCUTA",
+            "FACATATIVA",
+            "FLORENCIA",
+            "FUSAGASUGA",
+            "GIRARDOT",
+            "GRANADA",
+            "HONDA",
+            "IBAGUE",
+            "IPIALES",
+            "MANIZALES",
+            "MEDELLIN",
+            "MOCOA",
+            "MONTERIA",
+            "NEIVA",
+            "OCAÑA",
+            "PALMIRA",
+            "PAMPLONA",
+            "PASTO",
+            "PEREIRA",
+            "PITALITO",
+            "POPAYAN",
+            "PUERTO BERRRIO",
+            "QUIBDO",
+            "RIOHACHA",
+            "SANTA MARTA",
+            "SINCELEJO",
+            "SOACHA",
+            "SOCORRO",
+            "SOGAMOSO",
+            "TUNJA",
+            "VALLEDUPAR",
+            "VILLAVICENCIO",
+            "YOPAL"});
+            this.filterMap.Location = new System.Drawing.Point(1111, 49);
+            this.filterMap.Name = "filterMap";
+            this.filterMap.Size = new System.Drawing.Size(121, 21);
+            this.filterMap.TabIndex = 1;
+            this.filterMap.SelectedIndexChanged += new System.EventHandler(this.filterMap_SelectedIndexChanged);
             // 
             // gMap
             // 
@@ -290,7 +338,7 @@ namespace militar_zones_and_districts_distribution
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button Filter;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox filterMap;
         private GMap.NET.WindowsForms.GMapControl gMap;
         private System.Windows.Forms.ComboBox Filters;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
