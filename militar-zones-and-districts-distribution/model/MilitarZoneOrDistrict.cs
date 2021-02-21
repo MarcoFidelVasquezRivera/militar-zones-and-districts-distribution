@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace militar_zones_and_districts_distribution.model
 {
-    class MilitarZoneOrDistrict
+    public class MilitarZoneOrDistrict
     {
         private int zoneNumber;
         private string zoneDistrict;

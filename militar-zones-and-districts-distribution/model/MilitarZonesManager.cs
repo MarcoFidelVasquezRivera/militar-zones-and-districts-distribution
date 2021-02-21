@@ -8,7 +8,7 @@ using System.Data;
 
 namespace militar_zones_and_districts_distribution.model
 {
-    class MilitarZonesManager
+    public class MilitarZonesManager
     {
         private List<MilitarZoneOrDistrict> militarZones;
         private DataTable dataTable;
@@ -60,13 +60,21 @@ namespace militar_zones_and_districts_distribution.model
             }
         }
 
-        public DataTable LoadTable()
+        public void FilterByInterval(int LowerInterval, int HigherInterval) 
         {
             dataTable.Rows.Clear();
-            
-
-            return null;
+            List<MilitarZoneOrDistrict> passedFilter = new List<MilitarZoneOrDistrict>();
+            foreach (MilitarZoneOrDistrict mz in militarZones)
+            {
+                if (mz.GetZoneNumber() >= LowerInterval && mz.GetZoneNumber() <= HigherInterval) 
+                {
+                    passedFilter.Add(mz);                
+                
+                }
+            }
+            dataTable.Rows.Add(passedFilter);
         }
+
 
 
     }
